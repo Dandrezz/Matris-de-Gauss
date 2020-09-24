@@ -12,11 +12,11 @@ const Answer = ({matrixA, matrixB}) => {
                         matrixA.map((element, index) => (
                             <tr key={index}>
                                 {element.map( (i, position) => (
-                                    <td key={position}>{i.toPrecision(1)} </td>
+                                    <td key={position}>{i.toPrecision(4)} </td>
                                 ))}
                                 <td></td>
                                 <td>
-                                    { matrixB[index].toPrecision(1) }
+                                    { matrixB[index].toPrecision(4) }
                                 </td>
                             </tr>
                         ))

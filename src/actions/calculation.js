@@ -13,16 +13,23 @@ import { types } from "../types/types";
                 matrixA[count] = [...element.split(',').map(parseFloat)];
                 count++;
             });
+        }else{
+            return;
         }
         if( (mtxB[0] === '{') && (mtxB[mtxB.length - 1] === '}') ){
             mtxB = mtxB.substr( 1, mtxA.length - 2 );
             matrixB = [...mtxB.split(',').map(parseFloat)];
+        }else{
+            return;
         }
 
         dispatch( loadInput( matrixA.map( element => [...element] ) ) );
         dispatch( loadAnswerTemp( [...matrixB] ) )
 
-        let x = [0,0,0];
+        let x = [];
+        for (let index = 0; index < matrixA.length; index++) {
+            x[index] = 0;
+        }
 
         for (let i = 0; i < matrixA.length - 1; i++) {
             for (let j = i + 1; j < matrixA.length; j++) {

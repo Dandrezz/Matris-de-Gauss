@@ -11,8 +11,6 @@ const MatrixScreen = () => {
     const dispatch = useDispatch();
     
     const [input, setInput] = useState("{{3,7,2},{5,1,7},{1,8,3}}={1,9,4}");
-    const [answered, setAnswered] = useState(false);
-
 
     const handleInputChange = ({ target }) => {
         setInput( target.value );
@@ -20,13 +18,12 @@ const MatrixScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setAnswered(true);
         dispatch( eliminacionGauss( input ) );
     }
 
     return (
         <>
-            <form onSubmit={ handleSubmit } className="top-10">
+            <form onSubmit={ handleSubmit } className={(answer.length>0?`top-3`:`top-10`)+` animation`}>
                 <div className="center-text mb-3">
                     <h1 className="color-blue same-line">
                         Diego
@@ -44,16 +41,20 @@ const MatrixScreen = () => {
                     <h3>Eliminación de Gauss-Jordan</h3>
                 </div>
             </form>
-            { answered && (
+            { (answer.length>0) && (
             <div>
-                <Answer matrixA={matrixA} matrixB={answerTemp}/>
                 <hr></hr>
-                <Answer matrixA={echelonMatrix.matrixA} matrixB={echelonMatrix.matrixB}/>
+                <Answer className="table-matrix" matrixA={matrixA} matrixB={answerTemp}/>
+                <hr></hr>
+                <Answer className="table-matrix" matrixA={echelonMatrix.matrixA} matrixB={echelonMatrix.matrixB}/>
                 <hr></hr>
                 <table className="table-matrix">
                     <tbody>
                         {answer.map( (element, i) =>(
                             <tr key={i}>
+                                <td>
+                                    Y{i}
+                                </td>
                                 <td>
                                     {element.toPrecision(3)}
                                 </td>
@@ -62,6 +63,7 @@ const MatrixScreen = () => {
                     </tbody>
                 </table>
             </div>)}
+            <div className="space"></div>
         </>
     )
 }
