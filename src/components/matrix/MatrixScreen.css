@@ -1,0 +1,41 @@
+.top-10{
+    margin-top: 10rem;
+}
+.center-text{
+    text-align: center;
+}
+.same-line{
+    display:inline;
+}
+.color-blue{
+    color: #577590;
+}
+
+.color-orange{
+    color: #f8961e;
+}
+
+.main-input{
+    width: 780px;
+    margin: auto;
+}
+
+.logo{
+    width: 5rem;
+}
+@media only screen and (max-width: 800px) {
+    .main-input{
+        width: 95%;
+        margin: auto;
+    }
+}
+
+.table-matrix{
+    margin: auto;
+}
+
+.table-matrix td{
+    width: 3rem;
+    text-align: center;
+    font-size: 2rem;
+}
